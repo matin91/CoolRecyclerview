@@ -7,12 +7,12 @@ import com.rocklobstre.coolRecyclerview.data.remote.response.Response
 /**
  * @author Matin Salehi on 31/12/2017.
  */
-abstract class BaseViewModel<T> : ViewModel() {
+abstract class BaseViewModel<in Params, T> : ViewModel() {
 
     val response: MutableLiveData<Response<T>> = MutableLiveData()
 
     val loadingStatus: MutableLiveData<Boolean> = MutableLiveData()
 
-    abstract fun loadData()
+    abstract fun loadData(params: Params? = null)
 
 }

@@ -12,15 +12,15 @@ import javax.inject.Inject
 /**
  * @author Matin Salehi on 31/12/2017.
  */
-class ListUsersViewModel
+class DetailUserViewModel
 @Inject constructor(
         private val scheduler: BaseScheduler,
         private val userRepository: UserRepository
-) : BaseViewModel<Void, List<User>>() {
+) : BaseViewModel<Int, User>() {
 
     @SuppressLint("CheckResult")
-    override fun loadData(params: Void?) {
-        userRepository.getUsers()
+    override fun loadData(params: Int?) {
+        userRepository.getUserById(params!!)
                 .subscribeOn(scheduler.io())
                 .observeOn(scheduler.ui())
                 .doOnSubscribe { loadingStatus.setValue(true) }

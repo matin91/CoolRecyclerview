@@ -15,9 +15,9 @@ class ListColorsViewModel
 @Inject constructor(
         private val scheduler: BaseScheduler,
         private val colorRepository: ColorRepository
-) : BaseViewModel<List<Color>>() {
+) : BaseViewModel<Void, List<Color>>() {
 
-    override fun loadData() {
+    override fun loadData(params: Void?) {
         colorRepository.getColors()
                 .subscribeOn(scheduler.io())
                 .observeOn(scheduler.ui())

@@ -1,5 +1,6 @@
 package com.rocklobstre.coolRecyclerview.di.modules
 
+import com.andremion.theatre.navigation.Navigator
 import com.rocklobstre.coolRecyclerview.data.remote.Api
 import com.rocklobstre.coolRecyclerview.domain.repository.ColorRepository
 import com.rocklobstre.coolRecyclerview.domain.repository.UserRepository
@@ -39,5 +40,9 @@ class AppModule {
     fun provideScheduler(): BaseScheduler {
         return SchedulerProvider()
     }
+
+    @Provides
+    @Singleton
+    internal fun provideNavigator() = Navigator()
 
 }

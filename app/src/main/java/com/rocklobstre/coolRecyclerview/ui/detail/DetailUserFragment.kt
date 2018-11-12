@@ -25,7 +25,7 @@ import javax.inject.Inject
 /**
  * @author Matin Salehi on 31/12/2017.
  */
-class ListUsersFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
+class DetailUserFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
