@@ -44,7 +44,7 @@
             android:transitionName="@{@string/event_image_transition + user.id}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:load_user_avatar="@{user}"
+            app:loadUrl="@{user.avatar}"
             tools:placeholderImage="@drawable/ic_launcher" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_marginTop="@dimen/text_margin"
             android:gravity="end"
             android:maxLines="1"
-            android:text="@{user.id}"
+            android:text="@{user.firstName}"
             android:textAlignment="textEnd"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorAccent"

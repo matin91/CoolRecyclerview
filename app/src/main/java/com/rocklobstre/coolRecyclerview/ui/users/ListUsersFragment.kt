@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.util.Pair
 import android.support.v4.view.ViewCompat
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -49,7 +50,11 @@ class ListUsersFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_users, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.swipeContainer.setOnRefreshListener(viewModel::loadData)
+        binding.swipeContainer.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
+            override fun onRefresh() {
+                viewModel.loadData();
+            }
+        })
         return binding.root
     }
 

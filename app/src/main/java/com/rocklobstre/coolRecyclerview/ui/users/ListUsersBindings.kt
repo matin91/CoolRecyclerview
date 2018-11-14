@@ -2,6 +2,9 @@ package com.rocklobstre.coolRecyclerview.ui.users
 
 import android.databinding.BindingAdapter
 import android.support.v7.widget.RecyclerView
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.rocklobstre.coolRecyclerview.domain.model.User
 import com.facebook.drawee.view.SimpleDraweeView
 import com.facebook.drawee.generic.RoundingParams
@@ -25,6 +28,17 @@ object ListUsersBindings {
 
         simpleDraweeView.hierarchy.roundingParams = roundingParams
         simpleDraweeView.setImageURI(user?.avatar)
+    }
+
+    @JvmStatic
+    @BindingAdapter("loadUrl")
+    fun loadUrl(imageView: ImageView, url: String?) {
+        url?.let {
+            Glide.with(imageView.context)
+                    .load(it)
+                    .apply(RequestOptions.noTransformation())
+                    .into(imageView)
+        }
     }
 
 }

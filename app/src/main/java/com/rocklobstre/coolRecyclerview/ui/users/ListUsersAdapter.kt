@@ -28,7 +28,6 @@ class ListUsersAdapter(private val items: List<User>, private val callbacks: Cal
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.user = items[position]
-        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount(): Int = items.size

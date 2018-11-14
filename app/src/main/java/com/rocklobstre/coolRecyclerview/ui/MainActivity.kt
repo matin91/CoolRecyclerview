@@ -7,7 +7,7 @@ import com.rocklobstre.coolRecyclerview.databinding.ActivityMainBinding
 import com.rocklobstre.coolRecyclerview.ui.colors.ListColorsFragment
 import dagger.android.support.DaggerAppCompatActivity
 import com.rocklobstre.coolRecyclerview.ui.common.ViewPagerAdapter
-import com.rocklobstre.coolRecyclerview.ui.users.DetailUserFragment
+import com.rocklobstre.coolRecyclerview.ui.users.ListUsersFragment
 
 /**
  * @author Matin Salehi on 31/12/2017.
@@ -35,7 +35,7 @@ class MainActivity : DaggerAppCompatActivity() {
     private fun setupTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
-        adapter.addFragment(DetailUserFragment(), getString(R.string.users))
+        adapter.addFragment(ListUsersFragment(), getString(R.string.users))
         adapter.addFragment(ListColorsFragment(), getString(R.string.colors))
 
         binding.viewPager.adapter = adapter
