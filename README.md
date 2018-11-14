@@ -1,5 +1,5 @@
 #### The main purpose is using the latest practices and libraries in Jitpack Android.
-
+remote API is hosted by: https://reqres.in/api/
 </br>
 
 <p align="center">
