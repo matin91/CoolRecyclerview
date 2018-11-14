@@ -1,6 +1,7 @@
 package com.rocklobstre.coolRecyclerview.di.modules
 
 import com.rocklobstre.coolRecyclerview.ui.colors.ListColorsFragment
+import com.rocklobstre.coolRecyclerview.ui.detail.DetailUserFragment
 import com.rocklobstre.coolRecyclerview.ui.users.ListUsersFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -16,5 +17,8 @@ interface FragmentBuildersModule {
 
     @ContributesAndroidInjector
     fun contributeListColorsFragment(): ListColorsFragment
+
+    @ContributesAndroidInjector
+    fun contributeDetailUserFragment(): DetailUserFragment
 
 }

@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import com.rocklobstre.coolRecyclerview.di.keys.ViewModelKey
 import com.rocklobstre.coolRecyclerview.ui.colors.ListColorsViewModel
 import com.rocklobstre.coolRecyclerview.ui.common.ViewModelFactory
+import com.rocklobstre.coolRecyclerview.ui.users.DetailUserViewModel
 import com.rocklobstre.coolRecyclerview.ui.users.ListUsersViewModel
 import dagger.Binds
 import dagger.Module
@@ -25,6 +26,12 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(ListColorsViewModel::class)
     fun bindListColorsViewModel(listColorsViewModel: ListColorsViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailUserViewModel::class)
+    fun bindDetailUserViewModel(listColorsViewModel: DetailUserViewModel) : ViewModel
+
 
     @Binds
     fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

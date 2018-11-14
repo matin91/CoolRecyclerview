@@ -49,6 +49,7 @@ class ListUsersFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_users, container, false)
+        binding.callbacks = this
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.swipeContainer.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
             override fun onRefresh() {

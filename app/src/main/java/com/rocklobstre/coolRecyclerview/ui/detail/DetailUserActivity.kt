@@ -2,16 +2,14 @@ package com.rocklobstre.coolRecyclerview.ui.detail
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import com.rocklobstre.coolRecyclerview.R
-import com.rocklobstre.coolRecyclerview.databinding.ActivityMainBinding
-import com.rocklobstre.coolRecyclerview.ui.colors.ListColorsFragment
-import com.rocklobstre.coolRecyclerview.ui.common.ViewPagerAdapter
-import com.rocklobstre.coolRecyclerview.ui.users.DetailUserFragment
+import com.rocklobstre.coolRecyclerview.databinding.ActivityDetailBinding
 import dagger.android.support.DaggerAppCompatActivity
 
 class DetailUserActivity  : DaggerAppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,24 +17,21 @@ class DetailUserActivity  : DaggerAppCompatActivity() {
     }
 
     private fun setupViews() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
         setupToolbar()
-        setupTabs()
+        val fragment = DetailUserFragment()
+        replaceFragment(fragment)
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.content_main, fragment)
+        fragmentTransaction.commit()
     }
 
     private fun setupToolbar() {
         setSupportActionBar(binding.includeToolbar?.toolbar)
         supportActionBar?.title = getString(R.string.app_name)
-    }
-
-    private fun setupTabs() {
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-
-        adapter.addFragment(DetailUserFragment(), getString(R.string.users))
-        adapter.addFragment(ListColorsFragment(), getString(R.string.colors))
-
-        binding.viewPager.adapter = adapter
-        binding.includeToolbar?.tabs?.setupWithViewPager(binding.viewPager)
     }
 
 }

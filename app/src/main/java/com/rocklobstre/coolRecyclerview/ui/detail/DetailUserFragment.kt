@@ -1,4 +1,4 @@
-package com.rocklobstre.coolRecyclerview.ui.users
+package com.rocklobstre.coolRecyclerview.ui.detail
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.util.Pair
 import android.support.v4.view.ViewCompat
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,46 +18,46 @@ import com.andremion.theatre.navigation.Navigator
 import com.rocklobstre.coolRecyclerview.BuildConfig
 import com.rocklobstre.coolRecyclerview.R
 import com.rocklobstre.coolRecyclerview.data.remote.response.Status
-import com.rocklobstre.coolRecyclerview.databinding.FragmentListUsersBinding
+import com.rocklobstre.coolRecyclerview.databinding.FragmentDetailUserBinding
 import com.rocklobstre.coolRecyclerview.domain.model.User
+import com.rocklobstre.coolRecyclerview.ui.users.DetailUserViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 /**
  * @author Matin Salehi on 31/12/2017.
  */
-class DetailUserFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
+class DetailUserFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject
     lateinit var navigator: Navigator
 
-    private lateinit var viewModel: ListUsersViewModel
+    private lateinit var viewModel: DetailUserViewModel
 
-    private lateinit var binding: FragmentListUsersBinding
+    private lateinit var binding: FragmentDetailUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ListUsersViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailUserViewModel::class.java)
 
         observeLoadingStatus()
         observeResponse()
 
-        viewModel.loadData()
+        val userId = navigator.getUser(this.requireActivity())
+        viewModel.loadData(userId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_users, container, false)
-        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.swipeContainer.setOnRefreshListener(viewModel::loadData)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_user, container, false)
         return binding.root
     }
 
     private fun observeResponse() {
-        viewModel.loadingStatus.observe(
-                this,
-                Observer { isLoading -> binding.swipeContainer.isRefreshing = isLoading ?: false })
+//        viewModel.loadingStatus.observe(
+//                this,
+//                Observer { isLoading -> binding.swipeContainer.isRefreshing = isLoading ?: false })
     }
 
     private fun observeLoadingStatus() {
@@ -64,7 +65,7 @@ class DetailUserFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
                 this,
                 Observer { response ->
                     if(response != null && response.status == Status.SUCCESS) {
-                        binding.users = response.data
+                        binding.user = response.data
                         binding.executePendingBindings()
                     } else {
                         if ((response != null && response.status == Status.ERROR) && BuildConfig.DEBUG) {
@@ -74,17 +75,6 @@ class DetailUserFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
                     }
                 }
         )
-    }
-
-    override fun onItemClick(view: View, item: User) {
-        val cardView = view.findViewById<View>(R.id.cardview)
-        val imageView = view.findViewById<View>(R.id.image_thumbnail)
-        val nameView = view.findViewById<View>(R.id.text_name)
-        val sharedViews = arrayOf(
-                Pair(cardView, ViewCompat.getTransitionName(cardView)),
-                Pair(imageView, ViewCompat.getTransitionName(imageView)),
-                Pair(nameView, ViewCompat.getTransitionName(nameView)))
-        activity?.let { navigator.navigateToDetail(it, item.id, sharedViews) }
     }
 
 }

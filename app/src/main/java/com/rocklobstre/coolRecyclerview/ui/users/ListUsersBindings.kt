@@ -15,30 +15,10 @@ import com.facebook.drawee.generic.RoundingParams
 object ListUsersBindings {
 
     @JvmStatic
-    @BindingAdapter("load_users")
-    fun loadUsers(recyclerView: RecyclerView, users: List<User>?) {
-        recyclerView.adapter = if (users != null) ListUsersAdapter(users) else ListUsersAdapter(emptyList())
-    }
+    @BindingAdapter("load_users", "callbacks", requireAll = false)
+    fun loadUsers(recyclerView: RecyclerView, users: List<User>?, callbacks: ListUsersAdapter.Callbacks?) {
+        recyclerView.adapter = if (users != null) ListUsersAdapter(users, callbacks) else ListUsersAdapter(emptyList(), callbacks)
 
-    @JvmStatic
-    @BindingAdapter("load_user_avatar")
-    fun loadUserAvatar(simpleDraweeView: SimpleDraweeView, user: User?) {
-        val roundingParams = RoundingParams.fromCornersRadius(5f)
-        roundingParams.roundAsCircle = true
-
-        simpleDraweeView.hierarchy.roundingParams = roundingParams
-        simpleDraweeView.setImageURI(user?.avatar)
-    }
-
-    @JvmStatic
-    @BindingAdapter("loadUrl")
-    fun loadUrl(imageView: ImageView, url: String?) {
-        url?.let {
-            Glide.with(imageView.context)
-                    .load(it)
-                    .apply(RequestOptions.noTransformation())
-                    .into(imageView)
-        }
     }
 
 }

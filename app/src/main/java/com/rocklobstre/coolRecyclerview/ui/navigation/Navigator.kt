@@ -28,7 +28,7 @@ import com.rocklobstre.coolRecyclerview.ui.MainActivity
 class Navigator {
 
     companion object {
-        private val EXTRA_EVENT = "${DetailUserActivity::class.java.`package`.name}.extra.EVENT"
+        private val EXTRA_USER = "${DetailUserActivity::class.java.`package`.name}.extra.USER"
     }
 
     fun navigateToHome(activity: Activity) {
@@ -39,11 +39,11 @@ class Navigator {
 
     fun navigateToDetail(activity: Activity, event: Int, sharedViews: Array<Pair<View, String>>) {
         val intent = Intent(activity, DetailUserActivity::class.java)
-        intent.putExtra(EXTRA_EVENT, event)
+        intent.putExtra(EXTRA_USER, event)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, *sharedViews).toBundle()
         ActivityCompat.startActivity(activity, intent, options)
     }
 
-    fun getEvent(activity: Activity) = activity.intent.getIntExtra(EXTRA_EVENT, 0)
+    fun getUser(activity: Activity) = activity.intent.getIntExtra(EXTRA_USER, 0)
 
 }

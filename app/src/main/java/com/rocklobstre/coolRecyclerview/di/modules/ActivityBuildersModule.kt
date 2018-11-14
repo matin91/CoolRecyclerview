@@ -1,6 +1,7 @@
 package com.rocklobstre.coolRecyclerview.di.modules
 
 import com.rocklobstre.coolRecyclerview.ui.MainActivity
+import com.rocklobstre.coolRecyclerview.ui.detail.DetailUserActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,5 +13,9 @@ interface ActivityBuildersModule {
 
     @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
     fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
+    fun contributeDetailUserActivity(): DetailUserActivity
+
 
 }

@@ -8,6 +8,10 @@
         <import type="com.rocklobstre.coolRecyclerview.domain.model.User" />
 
         <variable name="users" type="List&lt;User&gt;"/>
+
+        <variable
+            name="callbacks"
+            type="com.rocklobstre.coolRecyclerview.ui.users.ListUsersAdapter.Callbacks" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -28,7 +32,9 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:scrollbars="vertical"
-                app:load_users="@{users}" />
+                app:load_users="@{users}"
+                app:callbacks="@{callbacks}"
+                />
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </android.support.design.widget.CoordinatorLayout>
