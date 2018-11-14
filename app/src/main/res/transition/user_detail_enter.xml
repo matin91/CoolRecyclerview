@@ -2,12 +2,17 @@
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
     android:transitionOrdering="sequential">
 
+    <slide android:slideEdge="top">
+        <targets>
+            <target android:targetId="@id/appbar" />
+        </targets>
+    </slide>
     <transitionSet>
         <slide android:slideEdge="end">
             <targets>
-                <!--<target android:targetId="@id/card_price" />-->
-                <!--<target android:targetId="@id/text_venue" />-->
-                <!--<target android:targetId="@id/rating_bar" />-->
+                <target android:targetId="@id/card_price" />
+                <target android:targetId="@id/text_venue" />
+                <target android:targetId="@id/text_name" />
             </targets>
         </slide>
         <slide android:slideEdge="bottom">
@@ -16,10 +21,5 @@
             </targets>
         </slide>
     </transitionSet>
-    <slide android:slideEdge="top">
-        <targets>
-            <target android:targetId="@id/appbar" />
-        </targets>
-    </slide>
 
 </transitionSet>

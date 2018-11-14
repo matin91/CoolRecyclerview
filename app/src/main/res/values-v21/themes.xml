@@ -7,9 +7,9 @@
 
     <style name="AppTheme.Event" parent="AppTheme.NoActionBar.TranslucentStatusBar">
         <item name="android:windowSharedElementsUseOverlay">false</item>
-        <item name="android:windowEnterTransition">@transition/event_detail_enter</item>
-        <item name="android:windowReturnTransition">@transition/event_detail_return</item>
-        <item name="android:windowSharedElementReturnTransition">@transition/event_shared_element_return</item>
+        <item name="android:windowEnterTransition">@transition/user_detail_enter</item>
+        <item name="android:windowReturnTransition">@transition/user_detail_return</item>
+        <item name="android:windowSharedElementReturnTransition">@transition/user_shared_element_return</item>
     </style>
 
 </resources>

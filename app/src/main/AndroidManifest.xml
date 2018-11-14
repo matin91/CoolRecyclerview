@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.detail.DetailUserActivity"/>
+        <activity android:name=".ui.detail.DetailUserActivity"
+            android:theme="@style/AppTheme.Event"
+            />
     </application>
 
 </manifest>

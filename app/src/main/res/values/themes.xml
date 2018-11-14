@@ -27,7 +27,7 @@
 
 
     <style name="AppTheme.Event" parent="AppTheme.NoActionBar.TranslucentStatusBar">
-
+        <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
 
 </resources>
