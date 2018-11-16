@@ -1,20 +1,10 @@
 #### The main purpose is using the latest practices and libraries in Jitpack Android.
-
+remote API is hosted by: https://reqres.in/api/
 </br>
 
 <p align="center">
   <i>**UI inspired by <img src="preview.png" alt="UI"/></i>
 </p>
-
-## Architecture
-
-Uses concepts of the notorious Uncle Bob's architecture called [Clean Architecture].</br>
-The software produced by this architecture is going to be:
-
-* Independent of Frameworks.
-* Testable.
-* Independent of UI.
-* Independent of Database.
 
 <img alt='Clean' src="https://raw.githubusercontent.com/andremion/Theatre/master/art/clean.png" align="right" width="50%"/>
 
@@ -23,10 +13,6 @@ The software produced by this architecture is going to be:
 The overriding rule of this architecture says that the source code dependencies always point inwards.</br>
 The outer tiers can only dependent of inner tiers. Therefore, the inner tiers know nothing about the outer tiers.</br>
 The more further you go through the concentric circles, the higher level the software becomes. Which means that the level of abstraction increases.
-
-### Entities
-
-An entity is a set of data structures. These entities are the business objects of the application and encapsulate the most general and high-level rules, such as [Event] or [Rating].
 
 ### Use Cases
 
