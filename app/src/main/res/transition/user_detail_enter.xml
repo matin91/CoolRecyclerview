@@ -12,7 +12,7 @@
             <targets>
                 <target android:targetId="@id/card_price" />
                 <target android:targetId="@id/text_venue" />
-                <target android:targetId="@id/text_name" />
+                <target android:targetId="@id/text_price" />
             </targets>
         </slide>
         <slide android:slideEdge="bottom">

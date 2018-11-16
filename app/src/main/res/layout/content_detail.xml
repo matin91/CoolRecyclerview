@@ -84,7 +84,7 @@
             android:layout_margin="@dimen/text_margin"
             android:elevation="@dimen/cardview_default_elevation"
             android:maxLines="2"
-            android:text="@{user.firstName}"
+            android:text='@{user.firstName + " " + user.lastName}'
             android:textColor="@color/colorPrimary"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:transitionName="@{@string/event_name_transition + user.id}"

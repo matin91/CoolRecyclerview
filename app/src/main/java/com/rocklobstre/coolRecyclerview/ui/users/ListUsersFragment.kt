@@ -44,7 +44,8 @@ class ListUsersFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
         observeLoadingStatus()
         observeResponse()
 
-        viewModel.loadData()
+        val params = kotlin.Pair(1, 10)
+        viewModel.loadData(params)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
