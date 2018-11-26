@@ -54,7 +54,8 @@ class ListUsersFragment : DaggerFragment(), ListUsersAdapter.Callbacks {
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.swipeContainer.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
-                viewModel.loadData();
+                val params = kotlin.Pair(1, 10)
+                viewModel.loadData(params);
             }
         })
         return binding.root
